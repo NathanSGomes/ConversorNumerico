@@ -25,14 +25,38 @@ function converterNumero() {
     document.getElementById("resultado").innerText = "Resultado em " + baseSelecionada + ": \n" + resultado;
 }
 
-//Modo Noturno
-const inputCheck = document.querySelector('#modoNoturno')
-const elemento = document.querySelector('body')
+// Modo Noturno
+const inputCheck = document.querySelector('#modoNoturno');
+const elemento = document.querySelector('body');
+
+
+const modoSalvo = localStorage.getItem('modoNoturno');
+
+
+if (modoSalvo) {
+  inputCheck.checked = modoSalvo === 'dark';
+  atualizarTema(inputCheck.checked);
+}
 
 inputCheck.addEventListener('click', () => {
-    const modo = inputCheck.checked ? 'dark' : 'light'
-    elemento.setAttribute("data-bs-theme", modo)
-})
+  const modo = inputCheck.checked ? 'dark' : 'light';
+  localStorage.setItem('modoNoturno', modo); 
+  atualizarTema(inputCheck.checked);
+});
+
+function atualizarTema(isModoNoturno) {
+  const modo = isModoNoturno ? 'dark' : 'light';
+  elemento.setAttribute('data-bs-theme', modo);
+}
+
+
+window.addEventListener('load', () => {
+  if (modoSalvo === 'dark') {
+    inputCheck.checked = true;
+    atualizarTema(true);
+  }
+});
+
 
 //Ano Atual
 const anoAtual = document.getElementById("anoAtual");
