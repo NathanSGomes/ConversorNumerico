@@ -1,0 +1,28 @@
+input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+.card {
+    width: 18rem;
+    height: 30rem;
+}
+
+@media screen and (min-width: 375px) {
+    .card {
+        width: 20rem;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .card {
+        width: 22rem;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .card {
+        width: 24rem;
+    }
+}
